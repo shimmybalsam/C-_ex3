@@ -1,0 +1,20 @@
+-----------------------------------------------------------------
+      500*500        ||           50*50          ||
+-----------------------------------------------------------------
+    *    |     +     ||      *      |      +     ||
+-----------------------------------------------------------------
+ 0.833952 | 0.002666 || 0.000951306 | 2.3656e-05 || My Matrix
+-----------------------------------------------------------------
+ 8.63e-07 | 1.51e-07 ||  3.68e-07   |  1.89e-07  || Eigen Matrix
+-----------------------------------------------------------------
+
+As we can see in the table above, the addition will always be faster than multiplication.
+This is because it is a much "cheaper" application than mult which uses addition over and over.
+
+We also see that the eigen matrix works faster then my mtrix both on add nad on mult.
+This is probably because (and I say probably since I dont actually know how eigen is implemented,
+so what I'm saying is only a logical guess) my mult works by the naive algorithm which takes
+O(n^3) and there are faster algorithms out there which I guess Eigen uses. It is possible that for
+add they also use some manipluation which makes it faster.
+Furthermore, perhaps in general the data structure of theirs which they use to build a MatrixXd
+has faster access (for example) to values, causing add and mult to be faster.
